@@ -1,0 +1,48 @@
+{
+  "dataset": "CSE-CIC-IDS2018 processed traffic data for ML algorithms",
+  "raw_directory": "ai/data/raw/cse-cic-ids2018",
+  "analysis_scope": "Read-only full streaming scan of all CSV rows; no raw files changed.",
+  "files": [
+    {"name": "Friday-02-03-2018_TrafficForML_CICFlowMeter.csv", "bytes": 352368373, "rows": 1048575, "columns": 80, "time_range": ["2018-03-02 01:00:00", "2018-03-02 12:59:59"]},
+    {"name": "Friday-16-02-2018_TrafficForML_CICFlowMeter.csv", "bytes": 333723605, "rows": 1048575, "columns": 80, "time_range": ["2018-02-16 01:00:32", "2018-02-16 12:58:24"]},
+    {"name": "Friday-23-02-2018_TrafficForML_CICFlowMeter.csv", "bytes": 382840456, "rows": 1048575, "columns": 80, "time_range": ["2018-02-23 01:00:00", "2018-02-23 12:59:59"]},
+    {"name": "Thuesday-20-02-2018_TrafficForML_CICFlowMeter.csv", "bytes": 4054925350, "rows": 7948748, "columns": 84, "time_range": ["2018-02-20 01:00:00", "2018-02-20 12:59:59"]},
+    {"name": "Thursday-01-03-2018_TrafficForML_CICFlowMeter.csv", "bytes": 107842858, "rows": 331125, "columns": 80, "time_range": ["2018-03-01 01:00:00", "2018-03-01 12:59:59"]},
+    {"name": "Thursday-15-02-2018_TrafficForML_CICFlowMeter.csv", "bytes": 375945899, "rows": 1048575, "columns": 80, "time_range": ["2018-02-15 01:00:00", "2018-02-15 12:59:59"]},
+    {"name": "Thursday-22-02-2018_TrafficForML_CICFlowMeter.csv", "bytes": 382636202, "rows": 1048575, "columns": 80, "time_range": ["1970-01-10 03:04:26", "2018-02-22 12:59:59"]},
+    {"name": "Wednesday-14-02-2018_TrafficForML_CICFlowMeter.csv", "bytes": 358223333, "rows": 1048575, "columns": 80, "time_range": ["1970-01-05 03:01:17", "2018-02-14 12:59:59"]},
+    {"name": "Wednesday-21-02-2018_TrafficForML_CICFlowMeter.csv", "bytes": 328893673, "rows": 1048575, "columns": 80, "time_range": ["2018-02-21 01:55:46", "2018-02-21 10:43:21"]},
+    {"name": "Wednesday-28-02-2018_TrafficForML_CICFlowMeter.csv", "bytes": 209249758, "rows": 613104, "columns": 80, "time_range": ["2018-02-28 01:00:00", "2018-02-28 12:59:59"]}
+  ],
+  "totals": {"files": 10, "bytes": 6886649507, "rows": 16233002},
+  "schema": {
+    "timestamp_format": "dd/MM/yyyy HH:mm:ss",
+    "common_column_count": 80,
+    "common_non_numeric_columns": ["Timestamp", "Label"],
+    "exception_file": "Thuesday-20-02-2018_TrafficForML_CICFlowMeter.csv",
+    "exception_column_count": 84,
+    "exception_only_identifier_columns": ["Flow ID", "Src IP", "Src Port", "Dst IP"],
+    "common_network_fields": ["Dst Port", "Protocol", "Flow Duration", "Tot Fwd Pkts", "Tot Bwd Pkts", "TotLen Fwd Pkts", "TotLen Bwd Pkts", "Flow Byts/s", "Flow Pkts/s", "Flow IAT Mean", "Flow IAT Std", "Flow IAT Max", "Flow IAT Min", "Fwd IAT Tot", "Bwd IAT Tot", "FIN Flag Cnt", "SYN Flag Cnt", "RST Flag Cnt", "PSH Flag Cnt", "ACK Flag Cnt", "URG Flag Cnt", "Down/Up Ratio", "Active Mean", "Active Std", "Active Max", "Active Min", "Idle Mean", "Idle Std", "Idle Max", "Idle Min"],
+    "feature_family_count": {"flow_volume_and_duration": 8, "packet_length_statistics": 16, "inter_arrival_time_statistics": 20, "tcp_flag_counts": 8, "header_window_and_directional_features": 16, "active_idle_and_subflow_features": 12}
+  },
+  "labels": {
+    "label_column": "Label",
+    "distribution": {"Benign": 13484708, "Bot": 286191, "Brute Force -Web": 611, "Brute Force -XSS": 230, "DDOS attack-HOIC": 686012, "DDOS attack-LOIC-UDP": 1730, "DDoS attacks-LOIC-HTTP": 576191, "DoS attacks-GoldenEye": 41508, "DoS attacks-Hulk": 461912, "DoS attacks-SlowHTTPTest": 139890, "DoS attacks-Slowloris": 10990, "FTP-BruteForce": 193360, "Infilteration": 161934, "SQL Injection": 87, "SSH-Bruteforce": 187589},
+    "invalid_repeated_header_rows": 59,
+    "benign_percentage_including_all_rows": 83.06971
+  },
+  "data_quality": {
+    "blank_cells": 0,
+    "malformed_width_rows": 0,
+    "repeated_header_rows": 59,
+    "unparseable_timestamp_rows": 59,
+    "semantic_timestamp_outliers": {"Wednesday-14-02-2018_TrafficForML_CICFlowMeter.csv": 5, "Thursday-22-02-2018_TrafficForML_CICFlowMeter.csv": 9},
+    "out_of_order_adjacent_timestamps": 5249787,
+    "non_finite_values": {"Flow Byts/s": 95760, "Flow Pkts/s": 95760},
+    "non_finite_row_count_when_counted_in_both_rate_columns": 95760
+  },
+  "forecasting_assessment": {
+    "supports_temporal_network_state_forecasting": "qualified_yes",
+    "requirements_before_use": ["sort valid records by parsed timestamp within each collection day", "exclude repeated embedded headers and semantic timestamp outliers", "treat each collection day as a separate temporal segment", "use only features available before the prediction cutoff", "split chronologically before fitting any learned transformation"]
+  }
+}

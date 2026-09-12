@@ -1,0 +1,39 @@
+# Operating-system and editor files
+.DS_Store
+.idea/
+.vscode/
+__pycache__/
+*.py[cod]
+
+# Network captures and raw datasets
+*.pcap
+*.pcapng
+*.cap
+*.csv
+*.tsv
+*.parquet
+*.feather
+*.jsonl
+*.ndjson
+*.arff
+*.npy
+*.npz
+
+# AI datasets and generated artifacts (directory placeholders remain tracked)
+ai/data/raw/*
+!ai/data/raw/.gitkeep
+ai/data/interim/*
+!ai/data/interim/.gitkeep
+ai/data/processed/*
+!ai/data/processed/.gitkeep
+ai/outputs/*
+!ai/outputs/.gitkeep
+!ai/outputs/states/
+ai/outputs/states/*
+!ai/outputs/states/.gitkeep
+!ai/outputs/sequences/
+ai/outputs/sequences/*
+!ai/outputs/sequences/.gitkeep
+!ai/outputs/reports/
+ai/outputs/reports/*
+!ai/outputs/reports/.gitkeep
